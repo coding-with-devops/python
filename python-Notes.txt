@@ -13,7 +13,7 @@ Comments :
 	single line comment #
 	multiline comment """ sakas """
 	
-Chapter 2: Variables and Datatypes
+Chapter 2 - Variables and Datatypes
 	Data Type:-
 		Integer
 		Floating Number
@@ -38,3 +38,58 @@ Chapter 2: Variables and Datatypes
 			str(31) => "31" 		# integer to string conversion
 			int("32") => 32 	# string to integer conversion
 			float(32) => 32.0 	# integer to float conversion
+
+CHAPTER 3 – STRINGS
+- String is immutable
+	We can primarily write a string
+		a =	'harry' 	# Single quoted string 
+		b = "harry" 	# Double quoted string 
+		c = '''harry''' # Triple quoted string
+	STRING SLICING
+		H	a 	r	r	y
+		0	1 	2	3	4
+		-5	-4	-3	-2	-1
+		sl = name [ ind_start:ind-end]
+	SLICING WITH SKIP VALUE
+		word = "amazing" 
+		word[1: 6: 2] # "mzn"
+	STRING FUNCTIONS
+		1. 	len () function – This function returns the length of the strings.
+		2. 	String.endswith("rry")
+			String.endswith("rry")  
+			
+			– This function_ tells whether the variable string ends with and start with
+			Provide the value True/False
+		3. 	s.lower() – Converts all characters in s to lowercase.
+
+			s.upper() – Converts all characters in s to uppercase.
+
+			s.strip() – Removes leading and trailing whitespace from s.
+
+			s.lstrip() – Removes leading whitespace from s.
+
+			s.rstrip() – Removes trailing whitespace from s.
+			
+			s.find(sub) – Returns the index of the first occurrence of sub in s, or -1 if not found.
+
+			s.index(sub) – Like find(), but raises an error if sub is not found.
+			
+			s.replace(old, new) – Replaces occurrences of old with new in s.
+			
+			s.count(sub) – Counts occurrences of sub in s.
+			
+			s.startswith(prefix) – Checks if s starts with prefix.
+
+			s.endswith(suffix) – Checks if s ends with suffix.
+			
+			s.isalpha() – Returns True if s contains only letters.
+			
+			s.isdigit() – Returns True if s contains only digits.
+			
+			s.isalnum() – Returns True if s contains only letters and digits.
+			
+			s.isspace() – Returns True if s contains only whitespace.
+			
+			s.format(*args, **kwargs) – Formats the string using placeholders.
+
+			f"{variable}" – f-strings for formatting variables inside strings.

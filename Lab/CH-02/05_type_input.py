@@ -1,3 +1,4 @@
+"""
 a = "31.12"
 b = str(a)
 c = type(b) 
@@ -10,3 +11,6 @@ y = int(input("Enter Number 2: "))
 print ("Number 1: ", x )
 print ("Number 2: ", y)
 print ("Sum Is: ", x + y)
+"""
+d = int(input("Enter Number D: "))
+print (" D To the Power of 2: ", d ** 3)
