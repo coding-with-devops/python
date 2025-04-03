@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../Projects/GitHub"
+		},
+		{
+			"path": "../../../../Projects/techeducation/Workshop/DO180-apps/todoapp"
+		},
+		{
+			"path": "../../../../Projects/techeducation/Workshop/Live"
+		},
+		{
+			"name": "workshop",
+			"path": "../../../../Projects/techeducation/Documents/workshop"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}

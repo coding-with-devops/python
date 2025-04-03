@@ -1,0 +1,40 @@
+::Python ::
+
+Literal :
+	Integer
+	Floating Number
+	Strings 
+	Boolean
+	
+REPL : Read Evalution Print Loop
+	Operate on python terminal
+	
+Comments :
+	single line comment #
+	multiline comment """ sakas """
+	
+Chapter 2: Variables and Datatypes
+	Data Type:-
+		Integer
+		Floating Number
+		Strings 
+		Boolean
+		None
+	RULES FOR CHOOSING AN IDENTIFIER :-
+		- contain alphabets, digits, and underscores.
+		- can only start with an alphabet and underscores
+		- can’t start with a digit.
+		- No while space is allowed to be used inside a variable name
+		Example : - harry, one8, seven, _seven
+	OPERATORS: 
+		1. Arithmetic operators: +, -, *, / etc.
+		2. Assignment operators: =, +=, -= etc.
+		3. Comparison operators: ==, >, >=, <, != etc.
+		4. Logical operators: and, or, not.
+	TYPE() and INPUT() FUNCTION:
+		a = 31.12 		# Float
+		a = "31.12"		# String
+		Convert one data type to another
+			str(31) => "31" 		# integer to string conversion
+			int("32") => 32 	# string to integer conversion
+			float(32) => 32.0 	# integer to float conversion
