@@ -61,35 +61,247 @@ CHAPTER 3 – STRINGS
 			– This function_ tells whether the variable string ends with and start with
 			Provide the value True/False
 		3. 	s.lower() – Converts all characters in s to lowercase.
-
 			s.upper() – Converts all characters in s to uppercase.
-
 			s.strip() – Removes leading and trailing whitespace from s.
-
 			s.lstrip() – Removes leading whitespace from s.
-
 			s.rstrip() – Removes trailing whitespace from s.
-			
 			s.find(sub) – Returns the index of the first occurrence of sub in s, or -1 if not found.
-
 			s.index(sub) – Like find(), but raises an error if sub is not found.
-			
 			s.replace(old, new) – Replaces occurrences of old with new in s.
-			
 			s.count(sub) – Counts occurrences of sub in s.
-			
 			s.startswith(prefix) – Checks if s starts with prefix.
-
 			s.endswith(suffix) – Checks if s ends with suffix.
-			
 			s.isalpha() – Returns True if s contains only letters.
-			
 			s.isdigit() – Returns True if s contains only digits.
-			
 			s.isalnum() – Returns True if s contains only letters and digits.
-			
 			s.isspace() – Returns True if s contains only whitespace.
-			
 			s.format(*args, **kwargs) – Formats the string using placeholders.
-
 			f"{variable}" – f-strings for formatting variables inside strings.
+		Example:
+			name = "Ashutosh"
+			age = 20
+			print("Hello " + name + "!" + " You are " + str(age) + " years old.")
+			print("Hello {}! You are {} years old.".format(name, age))
+			print(f"Hello {name}! You are {age} years old.")
+			
+CHAPTER 4 – LISTS AND TUPLES
+	LIST INDEXING:
+		l1 = [7,9,"harry"] 
+		l1[0] 			# 7 
+		l1[1] 			# 9 
+		l1[70] 			# error 
+		l1[0:2] 		# [7,9] #list slicing
+	
+	LIST METHODS:
+		l1.sort(): updates the list to [1,2,7,8,15,21]
+		l1.reverse(): updates the list to [15,21,2,7,8,1]
+		l1.append(8): adds 8 at the end of the list
+		l1.insert(3,8): This will add 8 at 3 index
+		l1.pop(2): Will delete element at index 2 and return its value.
+		l1.remove(21): Will remove 21 from the list.
+		
+	TUPLES IN PYTHON:
+	-	A tuple is an immutable data type in python
+		a = () # empty tuple 
+		a = (1) # this is not a tuple.we have to provide one comma after no.
+		a = (1,) # tuple with only one element needs a comma 
+		a = (1,7,2) # tuple with more than one element
+		
+		a.count (1): a count (1) will return number of times 1 occurs in a.
+		a.index (1) will return the index of first occurrence of 1 in a.
+		print(a + b) 							- Concatenation	+
+		print(t * 3)							- Repeatition	*
+		print(2 in t)	output: True/False 		- Membership: 	in
+		print ( 4 not in a)
+		for items in a:
+				print (i)						- Iteration: for loop
+				
+		add example:
+			my_tuple = (1, 2, 3)
+			# Number to add
+			num_to_add = 4
+			# Create a new tuple with the number added
+			new_tuple = my_tuple + (num_to_add,)
+			print("Original tuple:", my_tuple)
+			print("New tuple:", new_tuple)
+				
+CHAPTER 5 – DICTIONARY & SETS :-
+	- Dictionary is a collection of keys-value pairs.
+	
+	PROPERTIES OF PYTHON DICTIONARIES
+	
+	1.It is unordered.
+	2.It is mutable.
+	3.It is indexed.
+	4.Cannot contain duplicate keys.
+	example:-
+		a = { "key": "value",
+			  "harry": "code", 
+			  "marks": "100", 
+			  "list": [1, 2, 9] } 
+		print(a["key"]) # Output: "value" 
+		print(a["list"]) # Output: [1, 2, 9]
+		
+		• a.items(): 					Returns a list of (key,value)tuples.
+		• a.keys(): 					Returns a list containing dictionary's keys.
+		• a.update({"friends": "Ashutosh"}): 		Updates the dictionary with supplied key-value pairs.
+		• a.get("name"): 				Returns the value of the specified keys (and value is returned
+		• dict.pop(key[, default])		: Removes specified key and returns the value. If key not found, returns default
+		• dict.popitem()				: Removes and returns the last inserted key-value pair.
+		• dict.setdefault(key[, default]) : Returns value if key exists, otherwise inserts key with default and returns default.
+	- set ()
+	  Set is a collection of non-repetitive elements.
+	  
+	  a = set()
+	  a = ( a, ab, 1, 54, 5, 5,True, 55.09,5,100,9822,5)
+	  
+		1. Sets are unordered => Element’s order doesn’t matter
+		2. Sets are unindexed => Cannot access elements by index
+		3. There is no way to change items in sets.
+		4. Sets cannot contain duplicate values.
+		
+	OPERATIONS ON SETS :-
+		s.add(1) : Add to sets 
+		len(s): Returns 4, the length of the set
+		s.remove(8): Updates the set s and removes 8 from s.
+		s.pop(): Removes an arbitrary element from the set and return the element removed.
+		s.clear():empties the set s.
+		s.union({8,11}): Returns a new set with all items from both sets. {1,8,2,3,11}.
+		s.intersection({8,11}): Return a set which contains only item in both sets {8}.
+		
+		a = {1, 2, 3, 4}
+		b = {3, 4, 5, 6}
+		print("Union:", a | b)              	# {1, 2, 3, 4, 5, 6}
+			print(a.union(b))
+		print("Intersection:", a & b)       	# {3, 4}
+			print(a.intersection(b))
+		print("Difference (a - b):", a - b) 	# {1, 2}
+			print(a.difference(b))
+		print("Symmetric Difference:", a ^ b)  # {1, 2, 5, 6}
+			print(a.symmetric_difference(b))
+		print({3,4}.issubset(set2))
+		
+		set1 = {1, 2, 3}
+		set2 = {1, 2, 3, 4, 5}
+		set3 = {6, 7}
+		# issubset
+		print("set1 is subset of set2:", set1.issubset(set2))      # True
+		# issuperset
+		print("set2 is superset of set1:", set2.issuperset(set1))  # True
+		# isdisjoint
+		print("set1 is disjoint with set3:", set1.isdisjoint(set3))  # True
+
+		example:
+				s = set()
+				s.add(18)
+				s.add('18')
+				##Unique Number
+				unique_numbers = set()
+				for i in range(8):
+					number = int(input(f"Enter a number {i + 1}: "))
+					unique_numbers.add(number)
+				print("Unique numbers are:", unique_numbers)
+				
+				dict = {}
+				languages = []
+				names = ['Alice', 'Bob', 'Charlie', 'David']
+				for i in range(len(names)):
+				languages = input(f"Enter {names[i]}'s favorite language: ")
+				dict.update({names[i]: languages})
+				print(dict)
+
+CHAPTER 6 – CONDITIONAL EXPRESSION ::
+	IF ELSE AND ELIF IN PYTHON :-
+	- If else and elif statements are a multiway decision taken by our program due to certain conditions in our code.
+	RELATIONAL OPERATORS:
+		Relational Operators are used to evaluate conditions inside the if statements. Some examples of relational operators are:
+		==: equals.
+		> =: greater than/ equal to.
+		< =: lesser than/ equal to.
+	LOGICAL OPERATORS:
+		In python logical operators operate on conditional statements. For Example:
+
+		and – true if both operands are true else false.
+		or – true if at least one operand is true or else false.
+		not – inverts true to false & false to true.
+		
+			if (condition1): 
+				#code 
+			elif (condition2): 
+				# this ladder will stop once a condition in an if or elif is met. #code 
+			elif(condition3): 
+				#code 
+			else: 
+				#code
+		Example :-
+			spam_keywords = ["Make a lot of money", "buy now", "subscribe this", "click this"]
+			comment = input("Enter the comment: ")
+    
+			if comment in spam_keywords:
+				print("Spam comment")
+			else:
+				print("Not a spam comment")
+				
+			if "Harry".lower() in post.lower():			# Using lower() method to make the comparison case insensitive
+				print("Yes, We are talking about Harry.")
+			else:
+				print("No, We are not talking about Harry.")
+
+CHAPTER 7 – LOOPS IN PYTHON ::
+	- Loops make it easy for a programmer to tell the computer which set of instructions to repeat and how!
+	TYPES OF LOOPS IN PYTHON : -
+		Primarily there are two types of loops in python.
+		• while loops
+		• for loops
+	WHILE LOOP :-
+	- If the loop is entered, the process of [condition check & execution] is continued until the condition becomes False.
+		i = 0 
+		while i < 5: # print "Harry" – 5 times! 
+			print("Harry") 
+			i = i + 1
+	FOR LOOP :-
+		A for loop is used to iterate through a sequence like list, tuple, or string [iterables]
+	RANGE FUNCTION IN PYTHON:
+		The range() function in python is used to generate a sequence of number.
+		range(start, stop, step_size) # step_size is usually not used with range()
+	Example:	
+		for i in range(1,7): # range(7) can also be used. print(i)
+		print(i, end=" ")
+		
+		for i in range(2,50,2 ): # range(7) can also be used. print(i)
+		print("Even No : ", i)
+	
+	FOR LOOP WITH ELSE : - 
+		- An optional else can be used with a for loop if the code is to be executed when the loops exhausts
+			l= [1,7,8] 
+			for item in l: 
+				print(item) 
+			else: 
+				print("done") # this is printed when the loop exhausts!
+	
+	THE BREAK STATEMENT :- 
+	- ‘break’ is used to come out of the loop when encountered. It instructs the program to – exit the loop now.
+		
+		for i in range (0,80): 
+			print(i) # this will print 0,1,2 and 3 
+			if i==3 
+				break
+	THE CONTINUE STATEMENT : - 
+	- ‘continue’ is used to stop the current iteration of the loop and continue with the next one. 
+		It instructs the Program to 	“skip this iteration”.
+		
+		 for i in range(4):
+...         print("printing")
+...         if i == 2:
+...            continue
+...         print(i)
+	PASS STATEMENT : 
+	- pass is a null statement in python. It instructs to “do nothing”.
+	
+		if k == 5:
+			pass   # do nothing
+		for i in range(4):
+			print("printing") 
+			if i == 2: 
+				continue 
+			print(i)
