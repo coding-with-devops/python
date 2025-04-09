@@ -305,3 +305,41 @@ CHAPTER 7 – LOOPS IN PYTHON ::
 			if i == 2: 
 				continue 
 			print(i)
+
+CHAPTER 8 – FUNCTIONS & RECURSIONS
+	- A function is a group of statements performing a specific task.
+	- When a program gets bigger in size and its complexity grows, 
+		it gets difficult for a program to keep track on which piece of code is doing what!
+	EXAMPLE AND SYNTAX OF A FUNCTION
+		def func1():
+			print('hello')
+	FUNCTION CALL
+		func1() # This is called function call.
+	
+	TYPES OF FUNCTIONS IN PYTHON
+		There are two types of functions in python:
+		•Built in functions (Already present in python)
+		•User defined functions (Defined by the user)
+			Examples of built in functions includes len(), print(), range() etc.
+			The func1() function we defined is an example of user defined function.
+	
+	FUNCTIONS WITH ARGUMENTS:
+		def greet(name): 
+			gr = "hello"+ name 
+			return gr 
+		a = greet ("harry") # a will now contain
+		
+		def sum(a, b):
+			sum = a + b
+			return sum
+		sum(num1,num2)
+		
+	DEFAULT PARAMETER VALUE:
+	- We can have a value as default as default argument in a function.
+		
+		def func2(name, ending="Thank You !"):
+			print("Good Day,", name)
+			print(ending)	
+		func2("Rocky")
+	
+	
