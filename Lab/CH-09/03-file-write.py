@@ -4,7 +4,6 @@ text_entry = "Today date is Nice Day"
 
 file = open("my_file.txt", "w")
 file.write(text_entry)
-print(file)
 file.close()
 
 

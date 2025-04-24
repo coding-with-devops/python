@@ -358,9 +358,618 @@ CHAPTER 9 – FILE I/O ::
 		- Python has an open() function for opening files. It takes 2 parameters: filename and mode.
 		# open("filename", "mode of opening(read mode by default)") 
 		open("this.txt", "r")
+	
 	READING A FILE IN PYTHON :- 
-		
 		f = open("this.txt", "r") 	# Open the file in read mode 
 		text = f.read() 			# Read its contents 	
-		print(text)					# Print its contents 
-		file f.close()				# Close the (its mandatory to close a file once you open it)
+		print(text)					# Print its contents file 
+		f.close()				# Close the (its mandatory to close a file once you open it)
+	
+	OTHER METHODS TO READ THE FILE.:-
+		We can also use f.readline() function to read one full line at a time.
+		f.readline() 	# Read one line from the file.
+		f.readlines() 	# Read All line from the file.
+	
+	MODES OF OPENING A FILE:
+		r – open for reading
+		w - open for writing
+		a - open for appending
+		+ - open for updating.
+		‘rb’ will open for read in binary mode.
+		‘rt’ will open for read in text mode.
+	
+	WRITE FILES IN PYTHON:
+		- In order to write to a file, we first open it in write or append mode after which, 
+		  we use the python’s f.write() method to write to the file!
+			 
+			f = open("this.txt", "w") 	# Open the file in write mode
+			f.write("this is nice") 	# Write a string to the file 
+			f.close()					# Close the file 
+			
+	WITH STATEMENT :- 
+		- The best way to open and close the file automatically is the with statement.
+		# Open the file in read mode using 'with', which automatically closes the file 
+			with open("this.txt", "r") as f:
+				text = f.read()					# Read the contents of the file
+			print(text)							# Print the contents print(text)
+		Example: -  
+		  strg = "\n You are amazing.."
+		  with open("this.txt", "a") as fh:
+		  	fh.write(strg)
+		  with open("this.txt", "r") as f:
+		  #    print(f.read())
+		  #	   fh = f.readlines()
+		  	   fh = f.readlines()
+		  print(fh)
+		  
+CHAPTER 10 - OBJECT ORIENTED PROGRAMMING ::
+	- Solving a problem by creating object is one of the most popular approaches in programming. This is called object-oriented programming.
+	- This concept focuses on using reusable code (DRY Principle[Don't Repeat Yourself])
+	CLASS :-
+		- A class is a blueprint for creating object.
+			class Employee: # Class name is written in pascal case
+	OBJECT :- 
+		- An object is an instantiation of a class. When class is defined, a template (info) is defined. Memory is allocated only after object instantiation.
+		- Objects of a given class can invoke the methods available to it without revealing the implementation details to the user. – Abstractions & Encapsulation!
+		
+	MODELLING A PROBLEM IN OOPS :-
+		We identify the following in our problem.
+		• Noun → Class → Employee
+		• Adjective → Attributes → name, age, salary
+		• Verbs → Methods → getSalary(), increment()
+	CLASS ATTRIBUTES :-
+		- An attribute that belongs to the class rather than a particular object.
+			class employee:
+				company = "Google"
+				name = "Ashutosh"
+				salary = 1200000
+			harry = employee
+			#harry.salary = 2000000
+			print(harry.company, harry.name, harry.salary)
+			
+	INSTANCE ATTRIBUTES :- 
+		- An attribute that belongs to the Instance (object). Assuming the class from the previous 
+		- Note: Instance attributes, take preference over class attributes during assignment & retrieval.
+		
+		When looking up for harry.attribute it checks for the following:
+			1) Is attribute present in object?
+			2) Is attribute present in class?
+		
+		example:
+			harry.name = "harry" 
+			harry.salary = "30k" # Adding instance attribute
+			
+			
+	SELF PARAMETER :- 
+		- self refers to the instance of the class. It is automatically passed with a function call from an object.
+		
+			class employee:
+				company = "Google"
+				name = "Ashutosh"
+				salary = 1200000
+				def getinfo(self):
+					print(f" {self.name} is working on {self.company} and his salary is : {self.salary} ")
+					return
+			
+			my_data = employee()
+			#print(my_data.company, my_data.salary)
+			my_data.getinfo()  					#[ will convert to employee.getinfo(my_data) ]
+												# class name then function then varible name
+			employee.getinfo(my_data)
+			
+			
+	STATIC METHOD :- 
+		- Sometimes we need a function that does not use the self-parameter. We can define a static method like this:
+			@staticmethod # decorator to mark greet as a static method 
+			def greet(): 
+				print("Hello user")
+		Example:
+			class employee:
+				company = "Google"
+				name = "Ashutosh"
+				salary = 1200000
+				@staticmethod
+				def getinfo():
+					print(f" {employee.name} is working on {employee.company} and his salary is : {employee.salary} ")
+					return
+			
+			my_data = employee()
+			#print(my_data.company, my_data.salary)
+			my_data.getinfo()
+	
+	__INIT__() CONSTRUCTOR :-
+		: __init__() is a special method which is first run as soon as the object is created.
+		: __init__() method is also known as constructor.
+		
+		Example: 
+			class Employee: 
+				def __init__(self, name): 
+					self.name=name 
+				def getSalary(self): 
+				... 
+			harry = Employee("Harry")
+
+CHAPTER 11 - INHERITANCE & MORE ON OOPS ::
+	- Inheritance is a way of creating a new class from an existing class.
+	Syntax:
+		class Employee: # Base class 
+			# Code 
+		
+		class Programmer(Employee): # Derived or child class 
+			# Code
+	TYPES OF INHERITANCE :-
+		• Single inheritance
+		• Multiple inheritance
+		• Multilevel inheritance
+		
+	SINGLE INHERITANCE :-
+		- Single inheritance occurs when child class inherits only a single parent class.
+	MULTIPLE INHERITANCE :-
+		- Multiple Inheritance occurs when the child class inherits from more than one parent classes.
+		Example :
+				class employee:
+					company = "ITC Infotech"
+					name = "Ashutosh"
+					def show(self):
+						print(f"{self.name} is working on {self.company}")
+				class coders:
+					language = "Python"
+					def showlang(self):
+						print(f"Out of All Language here is your is {self.language}")
+				class programmer(employee, coders):
+					def showall(self):
+						print(f" {self.name}'s Company is {self.company} and he is working as {self.language} Develeoper")
+				
+				a = employee()
+				b = coders()
+				c = programmer()
+				a.show()
+				c.show()
+				c.showlang()
+				c.showall()
+				
+	MULTILEVEL INHERITANCE :- 
+	- Multiple Inheritance occurs when the child class inherits from more than one parent classes.
+		class employee:
+			company = "LTImindtree Limited"
+			def show(self):
+				print(f"My Company Name is {self.company}")
+		
+		class developes(employee):
+			language = "Python"
+			def showdata(self):
+				print(f"My Company : {self.company} and Working on {self.language} coder")
+		
+		class hr_details(developes):
+			salary = 120000000
+			def showdetails(self):
+				print(f"My Company is {self.company} and I am working as a {self.language} developer, I am getting Salary {self.salary}")
+		
+	SUPER() METHOD :
+	- super() method is used to access the methods of a super class in the derived class.
+	super().__init__() 			# __init__() Calls constructor of the base class
+	Example: [ If a constructor want to call a constructor of a super class ]
+		class employee:
+			def __init__(self):
+				print ("This is Employee Constuctor")
+			x = 10
+		class coders(employee):
+			def __init__(self):
+				print ("This is Coder's Constuctor")
+			y = 20
+		class manager(coders):
+			def __init__(self):
+				super().__init__()
+				print ("This is manager's Constuctor")
+			z = 0
+		c = manager()
+		print(c.z,c.y,c.z)
+	CLASS METHOD :
+	- A class method is a method which is bound to the class and not the object of the class.
+	- @classmethod decorator is used to create a class method.
+		Syntax:
+			@classmethod 
+			def(cls,p1,p2):
+		Example :
+			class employee:
+				a = 4
+				@classmethod
+				def show(cls):
+					print(f"Class value is {cls.a}")
+			e = employee()
+			e.a = 45
+			e.show()
+	@PROPERTY DECORATORS :-
+		class Employee: 
+			@property 
+			def name(self): 
+				return self.ename
+		- If e = Employee() is an object of class employee, we can print (e.name) to print the ename by internally calling name() function.
+	@.GETTERS AND @.SETTERS :- 
+		- The method name with ‘@property’ decorator is called getter method.
+			We can define a function + @ name.setter decorator like below:
+				@name.setter 
+				def name (self,value): 
+					self.ename = value
+	OPERATOR OVERLOADING IN PYTHON :
+		- Operators in Python can be overloaded using dunder methods.
+		- These methods are called when a given operator is used on the objects.
+		- Operators in Python can be overloaded using the following methods:
+	- Dunder methods :
+		Dunder methods (short for “double underscore” methods, like __init__, __str__, etc.) are special methods in Python that let you define how objects of your class behave with built-in functions and operators.
+	- Common Dunder Methods with Examples:
+		1. __init__ — Constructor :
+		
+			class Person:
+				def __init__(self, name):
+					self.name = name
+			
+			p = Person("Alice")
+			print(p.name)  # Output: Alice
+		2. __str__ — Human-readable string :
+		
+			class Person:
+				def __init__(self, name):
+					self.name = name
+				def __str__(self):
+					return f"My name is {self.name}"
+			p = Person("Bob")
+			print(str(p))  # Output: My name is Bob
+			
+		3. __repr__ — Unambiguous string (good for debugging)
+			
+			class Person:
+				def __init__(self, name):
+					self.name = namess
+				def __repr__(self):
+					return f"Person('{self.name}')"
+			print(repr(Person("Carol")))  # Output: Person('Carol')
+			
+		4. __add__ — Overload the + operator:
+			class Number:
+				def __init__(self, number1):
+					self.value = number1
+			
+				def __add__(self, number2):
+					return self.value + number2.value
+			
+			n1 = Number(10)
+			n2 = Number(20)
+			print(n1 + n2)  # Output: 30
+		5. __len__ — Length of the object:
+		
+			class CustomList:
+				def __init__(self, items):
+					self.items = items
+				def __len__(self):
+					return len(self.items)
+			
+			cl = CustomList([1, 2, 3])
+			print(len(cl))  # Output: 3
+	-- Other Useful Dunder Methods:
+	
+		p1+p2 # p1.__add__(p2) 
+		p1-p2 # p1.__sub__(p2) 
+		p1*p2 # p1.__mul__(p2) 
+		p1/p2 # p1.__truediv__(p2) 
+		p1//p2 # p1.__floordiv__(p2)
+		
+	:-	__eq__, __lt__, __gt__ 				– comparison operators
+	:-	__getitem__, __setitem__ 			– indexing/slicing
+	:-	__call__ 							– makes an object callable like a function
+				class Greeter:
+					def __init__(self, greeting):
+						self.greeting = greeting
+					def __call__(self, name):
+						return f"{self.greeting}, {name}!"
+				# Create an instance
+				hello = Greeter("Hello")
+				# Now call the object like a function
+				print(hello("Alice"))  # Output: Hello, Alice!
+				print(hello("Bob"))    # Output: Hello, Bob!
+
+	:-	__iter__, __next__ 					– iteration protocol
+		Example :
+				class Counter:
+					def __init__(self, limit):
+						self.limit = limit
+						self.current = 0
+					def __iter__(self):
+						return self  # The object itself is the iterator
+					def __next__(self):
+						if self.current < self.limit:
+							self.current += 1
+							return self.current
+						else:
+							raise StopIteration
+				# Usage
+				counter = Counter(5)
+				for num in counter:
+					print(num)
+					
+CHAPTER 12 – ADVANCED PYTHON 1 :- [ NEWLY ADDED FEATURES IN PYTHON ]
+	WALRUS OPERATOR :-
+		- The walrus operator (:=), introduced in Python 3.8, allows you to assign values to variables as part of an expression. This operator, named for its resemblance to the eyes and tusks of a walrus, is officially called the "assignment expression."
+		
+			#Using walrus operator 
+			if (n := len([1, 2, 3, 4, 5])) > 3:
+				print(f"List is too long ({n} elements, expected <= 3)")
+				
+			n = 5
+			if (n := int):
+				iprint ("Yes This Integer")
+				
+	TYPES DEFINITIONS IN PYTHON :-
+		- Type hints are added using the colon (:) syntax for variables and the -> syntax for function return types.
+		
+	ADVANCED TYPE HINTS
+	
+		def greet(name : str) -> str:
+			return f"Hello ! {name}"
+		print(greet("Ashutsoh"))
+		
+	ADVANCED TYPE HINTS :-
+	-	Python's typing module provides more advanced type hints, such as List, Tuple, Dict, and Union.
+		You can import List, Tuple and Dict types from the typing module like this:
+			from typing import List, Tuple, Dict, Union
+			
+			from typing import List,Tuple,Dict,Union
+
+			#List of integers 
+			numbers: List[int] = [1, 2, 3, 4, 5] 
+			
+			# Tuple of a string and an integer 
+			person: Tuple[str, int] = ("Alice", 30) 
+			
+			# Dictionary with string keys and integer values 
+			scores: Dict[str, int] = {"Alice": 90, "Bob": 85} 
+			
+			# Union type for variables that can hold multiple types 
+			identifier: Union[int, str] = "ID123" 
+			identifier = 12345 # Also valid
+	MATCH CASE :
+		The basic syntax of the match statement involves matching a variable against several cases using the case keyword.
+		
+		def http_status(status): 
+			match status: 
+				case 200: 
+					return "OK" 
+				case 404: 
+					return "Not Found" 
+				case 500: 
+					return "Internal Server Error" 
+				case _: 
+					return "Unknown status"
+
+		print(http_status(200))
+		
+	DICTIONARY MERGE & UPDATE OPERATORS :
+		New operators | and |= allow for merging and updating dictionaries.
+		DICTIONARY MERGE --
+		dict1 = {'a': 1, 'b': 2} 
+		dict2 = {'b': 3, 'c': 4} 
+		merged = dict1 | dict2 
+		print(merged)
+		
+	-	You can now use multiple context managers in a single with statement more cleanly using the parenthesised context manager
+		
+		with( 
+			open('file1.txt') as f1, 
+			open('file2.txt') as f2 
+			):
+			c1 = f1.read()
+			c2 = f2.read()
+			
+EXCEPTION HANDLING IN PYTHON :
+	- There are many built-in exceptions which are raised in python when something goes wrong.
+		Exception in python can be handled using a try statement. The code that handles the exception is written in the except clause.
+	Syntax:- 
+		try: 
+			#Code which might throw exception 
+		except Exception as e: 
+			print(e)
+	- When the exception is handled, the code flow continues without program interruption.
+	- We can also specify the exception to catch like below:
+	Syntax:
+		try: 
+			# Code 
+		except ZeroDivisionError: 
+			# Code 
+		except TypeError: 
+			# Code 
+		except: 
+			# Code
+	RAISING EXCEPTIONS :
+	- We can raise custom exceptions using the ‘raise’ keyword in python.
+		We can manually stop execution by raise Error
+		a = int(input("Enter 1st no:"))
+		b = int(input("Enter 2nd no:"))
+		if b == 0:
+			raise ZeroDivisionError("We cant devide any no by Zero")
+		else:
+			print(f"Division a/b = {a/b}")
+			
+	TRY WITH ELSE CLAUSE :
+	- Sometimes we want to run a piece of code when try was successful.
+		Syntax :
+			try: 
+				# Somecode 
+			except: 
+				# Somecode 
+			else: 
+				# Code
+		Example:
+			try:
+				a = int(input("Enter You Input:"))
+				print(f"Value : {a}")
+			
+			except Exception as e:
+				print(e)
+			
+			else:
+				print("Executed Successfully")  # It will execute if there is no error
+	TRY WITH FINALLY: -
+		- Python offers a ‘finally’ clause which ensures execution of a piece of code inspective of the exception.
+		- Mostly used in function while returning value
+		Example:
+			def main():   
+				try:
+					a = int(input("Enter You Input:"))
+					print(a)
+					return
+			
+				except Exception as e:
+					print("Error Found")
+					return
+			
+				finally:
+					print("Script execution completed and Check Logs")
+			main()
+	------- Python has many built-in exceptions: ------
+	
+			Exception			When it Occurs
+			---------			--------------
+			ValueError			Wrong value type
+			TypeError			Wrong data type
+			ZeroDivisionError	Division by zero
+			IndexError			List index out of range
+			KeyError			Dictionary key not found
+			FileNotFoundError	File not found
+			AttributeError		Accessing non-existent attribute
+			
+	IF __NAME__== ‘__MAIN__’ IN PYTHON :- 
+		- ‘__name__’ evaluates to the name of the module in python from where the program is ran.
+		- If the module is being run directly from the command line, the ‘ __name__’ is set to string 	“__main__”. Thus, this behaviour is used to check whether the module is run directly or imported to another file.
+		- Its generally used while module developement Where we dont want to run those code while import by another code.
+		
+		Example :
+		module.py
+			def Func():
+				print("This Is Module")
+			Func() 						# this will import as module
+			if __name__ == "__main__":	#Below will not import
+				print("We are directly execute from file. Cant import to other")
+				Func()
+				print(__name__)
+		main.py
+			from module import Func 
+	
+	THE GLOBAL KEYWORD :
+		- ‘global’ keyword is used to modify the variable outside of the current scope.
+		Example :
+			a = 10
+			def show():
+				global a 
+				a = 50
+				return a
+			
+			print(a)
+			print(show())
+			print(a)
+	ENUMERATE FUNCTION IN PYTHON :-
+		- The ‘enumerate’ function adds counter to an iterable and returns it
+			index = 1
+			for i in list1:
+				print(f"Item in Number {index} is {i}")
+				index = index+1
+			## Simplify Method ######
+			for index, item in enumerate(list1):
+				print(f"Item in Number {index} is {item}")
+	
+	LIST COMPREHENSIONS :-
+		- List Comprehension is an elegant way to create lists based on existing lists.
+		  Example 1:	
+			list1 = [1,7,10,22]
+			# Normal method for squared of a List
+			squaredlist = []
+			for item in list1:
+				squaredlist.append(item*item)
+			print(squaredlist)
+			#List Comprehension Method
+			squaredlist2 = [ item*item for item in list1]
+			print(squaredlist2)
+		  Example 2:
+			list1 = [1,7,12,11,22] 
+			list2 = [item for item in list1 if item > 8]
+			print(list1)
+			print(list2)
+			
+CHAPTER 13 – ADVANCED PYTHON 2 ::
+	python -m pip install --upgrade pip
+	VIRTUAL ENVIRIONMENT
+		- An environment which is same as the system interpreter but is isolated from the other Python environments on the system.
+	INSTALLATION:
+		# To use virtual environments, we write:
+			pip install virtualenv
+		# We create a new environment using:
+			virtualenv myprojectenv 	# Creates a new venv
+			python -m venv env
+		# The next step after creating the virtual environment is to activate it.
+			.\env\Scripts\activate.bat
+		# Deactivate environment
+			deactivate	
+	PIP FREEZE COMMAND :
+		- ‘pip freeze’ returns all the package installed in a given python environment along with the versions.
+			
+			pip freeze > requirements.txt
+		
+		- We can distribute this file to other users, and they can recreate the same environment using:
+			
+			pip install –r requirements.txt
+		
+	LAMBDA FUNCTIONS :
+		- Function created using an expression using ‘lambda’ keyword.
+		- We can create a variable as a function through lambda
+		Syntax: 
+			lambda arguments:expressions
+		Example:
+			sum = lambda a,b,c: a+b+c
+			s = sum(3,4,5)
+			print(s)
+	JOIN METHOD (STRINGS):
+		- Creates a string from iterable objects.
+		Example 1:
+			l = ["apple", "mango", "banana"]
+			result = ", and, ".join(l) 
+			print(result)
+		Example 2:
+			l = "Ashutosh Muduli"
+			result = "-".join(l.split(" "))
+			print(result)
+
+	FORMAT METHOD (STRINGS):
+		- Formats the values inside the string into a desired output.
+		Syntax: 
+			"{} is a good {}".format("harry", "boy") #1. 
+			"{} is a good {o}".format("harry", "boy") #2.
+		Example :- 
+			a = "{} is a good {}".format("harry", "boy") 
+			b = "{1} is a good {0}".format("harry", "boy")
+			print(a)
+			print(b)
+	MAP, FILTER & REDUCE :
+		MAP :-
+			- Map applies a function to all the items in an input_list.
+			- If we want to run a function from all elements then we can use map
+		FILTER:-
+			- Filter creates a list of items for which the function returns true.
+				l = [ 1,2,3,4,5]
+
+				def evenfind(n):
+					if n%2 == 0:
+						return True
+					return False
+				evennum = filter(evenfind,l)
+				print(list(evennum))
+		
+		REDUCE :-
+			- Reduce applies a rolling computation to sequential pair of elements.
+			Example 1:
+				l = [ 1,2,3,4,5]
+				def sum(a,b):
+					return a+b
+				result = reduce(sum,l)
+				print(result)
+			Example 2:
+				result2 = lambda x, y : x*y
+				print(reduce(result2, l))
